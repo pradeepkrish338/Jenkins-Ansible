@@ -1,6 +1,6 @@
 ---
 - name: Setting up slave nodes for jenkins job.
-  hosts: jenkins_slaves
+  hosts: slave1
   become: true
 
   tasks: 
