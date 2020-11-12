@@ -10,8 +10,13 @@
           - git
           - docker
         state: present
+
     - name: Enable docker service
       service:
         name: docker
-        status: started
         enabled: yes
+
+    - name: Start docker service.
+      service:
+        name: docker
+        state: started 
