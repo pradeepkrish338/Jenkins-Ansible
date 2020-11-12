@@ -1,0 +1,17 @@
+---
+- name: Setting up slave nodes for jenkins job.
+  hosts: jenkins_slaves
+  become: true
+
+  tasks: 
+    - name: Installing httpd on jenkins slave nodes.
+      yum:
+        name:
+          - git
+          - docker
+        state: present
+    - name: Enable docker service
+      service:
+        name: docker
+        status: started
+        enabled: yes
