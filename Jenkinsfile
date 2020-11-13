@@ -1,9 +1,9 @@
 pipeline{
    agent{ label 'master' }
    stages{
-      stage("Preparing Slave Nodes"){
+      stage('Preparing Slave Nodes'){
          steps{
-	    sh 'ls /home/$USER/'
+	    sh 'ls /var/lib/jenkins/workspace/'
 	 }
       }
    }
