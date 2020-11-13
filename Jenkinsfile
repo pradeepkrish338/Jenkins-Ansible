@@ -3,7 +3,7 @@ pipeline{
    stages{
       stage("Preparing Slave Nodes"){
          steps{
-	    sh 'sudo ansible --version'
+	    sh 'ls /home/$USER/'
 	 }
       }
    }
