@@ -3,7 +3,7 @@ pipeline{
    stages{
       stage('Preparing Slave Nodes'){
          steps{
-	    sh 'ansible --version'
+	    sh 'ansible node1 -m ping -i inventory'
 	 }
       }
    }
