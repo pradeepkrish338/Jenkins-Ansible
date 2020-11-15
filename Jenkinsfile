@@ -3,7 +3,7 @@ pipeline{
    stages{
       stage('Preparing Slave Nodes'){
          steps{
-	    sh 'ansible-playbook jenkins_slave_dependency.yml -i inventory -vvv'
+	    sh 'ssh 172.31.40.46'
 	 }
       }
    }
