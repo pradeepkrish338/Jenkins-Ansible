@@ -1,7 +1,6 @@
 ---
 - name: Setting up slave nodes for jenkins job.
   hosts: slave_nodes
-  become: true
 
   tasks: 
     - name: Installing httpd on jenkins slave nodes.
