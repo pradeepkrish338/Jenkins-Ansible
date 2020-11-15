@@ -3,7 +3,7 @@ pipeline{
    stages{
       stage('Preparing Slave Nodes'){
          steps{
-	    sh 'ls /var/lib/jenkins/workspace/'
+	    sh 'ansible-playbook jenkins_slave_dependency.yml -i inventory'
 	 }
       }
    }
