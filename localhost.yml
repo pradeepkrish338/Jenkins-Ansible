@@ -1,0 +1,13 @@
+---
+- name: jenkins job.
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks: 
+    - name: Installing httpd on jenkins slave nodes.
+      yum:
+        name:
+          - telnet
+        state: present
+
