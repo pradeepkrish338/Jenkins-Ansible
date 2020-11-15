@@ -3,7 +3,7 @@ pipeline{
    stages{
       stage('Preparing Slave Nodes'){
          steps{
-	    sh 'ansible-playbook jenkins_slave_dependency.yml -i inventory -vvv'
+	    'ansiblePlaybook credentialsId: 'slave_node_creds', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'jenkins_slave_dependency.yml'
 	 }
       }
    }
