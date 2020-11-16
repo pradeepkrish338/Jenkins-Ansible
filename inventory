@@ -6,5 +6,5 @@ node1 ansible_host=172.31.40.46
 ansible_port=22
 ansible_connection='ssh'
 ansible_ssh_user='ec2-user' 
-ansible_sss_private_key_file='/home/ec2-user/.ssh/authorized_keys'
+ansible_sss_private_key_file='.ssh/id_rsa'
 #ansible_ssh_common_args='-o StrictHostKeyChecking=no'
