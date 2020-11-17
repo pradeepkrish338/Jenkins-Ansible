@@ -30,7 +30,8 @@
       unarchive:
         src: /opt/apache-maven-3.6.3-bin.tar.gz
         dest: /opt/
-    
+        remote_src: yes
+
     - name: Settingup MAVEN Environment Variables.
       blockinfile:
         path: /etc/profile
