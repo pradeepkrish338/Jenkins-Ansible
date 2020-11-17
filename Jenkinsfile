@@ -33,7 +33,7 @@ pipeline{
      stage('STAGE3: Build Maven'){
         agent{ label 'Jenkins-Slave-Node' }
         tools{
-           maven 'maven-3.6.3'
+           maven 'Maven-3.6.3'
            jdk 'JDK-1.8.0'
         }
         steps{
