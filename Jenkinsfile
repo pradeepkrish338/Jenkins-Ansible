@@ -30,7 +30,7 @@ pipeline{
 	    }	
          }
      }
-     stage(STAGE3: Running Application){
+     stage('STAGE3: Running Application'){
         agent{ label 'Jenkins-Slave-Node' }
         steps{
            script{
