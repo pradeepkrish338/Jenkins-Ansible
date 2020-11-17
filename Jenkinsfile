@@ -11,12 +11,12 @@ pipeline{
          agent{ label 'Jenkins-Slave-Node' }
          steps{
             script{
-               if( !FileExists('Jenkins_Pipeline_Files')){
+               if( !fileExists('Jenkins_Pipeline_Files')){
                    stage('Stage 1'){
                       sh 'mkdir Jenkins_Pipeline_Files'
                    }
                }
-               if( !FileExists('Maven_Application')){
+               if( !fileExists('Maven_Application')){
                    stage('Stage 2'){
                       sh 'mkdir Maven_Application'
                    }
