@@ -30,15 +30,17 @@ pipeline{
 	    }	
          }
      }
-     stage('STAGE3: Running Application'){
+     stage('STAGE3: Build Maven'){
         agent{ label 'Jenkins-Slave-Node' }
+        tools{
+           maven 'maven-3.6.3'
+           jdk 'JDK-1.8.0'
+        }
         steps{
-           script{
-              dir( 'Maven_Application' ){
-                    sh 'mvn -v'
-               }
+           dir( 'Maven_Application' ){
+                sh 'mvn -v'
            }
         }
-    }
+     }
    }
 }
