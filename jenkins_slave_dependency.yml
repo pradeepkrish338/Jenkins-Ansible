@@ -3,7 +3,7 @@
   hosts: slave_nodes
   become: true
 
-  tasks: 
+  tasks:
     - name: Installing httpd on jenkins slave nodes.
       yum:
         name:
@@ -16,7 +16,33 @@
         name: docker
         enabled: yes
 
-    - name: Start docker service.
+    - name: Startting docker service.
       service:
         name: docker
-        state: started 
+        state: started
+
+    - name: Settingup MAVEN Downloading Binary
+      get_url:
+        url: https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+        dest: /opt
+
+    - name: Settingup MAVEN Extractig Binary.
+      unarchive:
+        dest: /opt/
+        src: /opt/apache-maven-3.6.3-bin.tar.gz
+    
+    - name: Settingup MAVEN Environment Variables.
+      blockinfile:
+        path: /etc/profile
+        insertafter: EOF
+        block: |
+          export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+          export JRE_HOME=/usr/lib/jvm/java-1.8.0-openjdk/jre
+          export M2_HOME=/opt/apache-maven-3.6.3
+          export M2=$M2_HOME/bin
+          export PATH=$M2:$PATH
+          export PATH=$JAVE_HOME:$PATH
+          export PATH=$JRE_HOME:$PATH
+     
+    - name: Settingup MAVEN Executing profile script
+      shell: source /etc/profile
