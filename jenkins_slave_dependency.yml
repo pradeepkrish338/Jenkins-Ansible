@@ -28,8 +28,8 @@
 
     - name: Settingup MAVEN Extractig Binary.
       unarchive:
-        dest: /opt/
         src: /opt/apache-maven-3.6.3-bin.tar.gz
+        dest: /opt/
     
     - name: Settingup MAVEN Environment Variables.
       blockinfile:
