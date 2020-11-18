@@ -13,7 +13,6 @@ pipeline{
             script{
                when(!fileExists('Pipeline_Files')){
                     sh 'mkdir Jenkins_Pipeline_Files'
-                  }  
                }
                when(!fileExists('Maven_Application')){
                     sh 'mkdir Maven_Application'
