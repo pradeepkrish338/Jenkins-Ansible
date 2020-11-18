@@ -9,20 +9,22 @@ pipeline{
       }
       stage('STAGE2: Downloading Application Code From GitHub'){
          agent{ label 'Jenkins-Slave-Node' }
-         when{ !fileExists('Pipeline_Files')}
-	      steps{
+         steps{
+            script{
+               if( !fileExists('Pipeline_Files') ){
                     sh 'mkdir Jenkins_Pipeline_Files'
-		    dir('Jenkins_Pipeline_Files'){
-			    git 'https://github.com/nehannn86/Jenkins-Ansible.git'
-                    }
-	      }
-         when{ !fileExists('Maven_Application')}
-	      steps{
+               }
+               if( !fileExists('Maven_Application') ){
                     sh 'mkdir Maven_Application'
-		    dir('Maven_Application'){
-			    git 'https://github.com/nehannn86/sample-maven-project.git'
-                    }
-	      }
+               }
+               dir('Jenkins_Pipeline_Files'){
+                    git 'https://github.com/nehannn86/Jenkins-Ansible.git'
+               }
+               dir('Maven_Application'){
+                    git 'https://github.com/nehannn86/sample-maven-project.git' 
+               }
+	    }	
+         }
       }
      stage('STAGE3: Build Maven'){
         agent{ label 'Jenkins-Slave-Node' }
