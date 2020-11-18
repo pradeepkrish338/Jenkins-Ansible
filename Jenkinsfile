@@ -26,7 +26,7 @@ pipeline{
 	    }	
          }
       }
-     stage('STAGE3: Build Maven'){
+     stage('STAGE3: Compiling,Testing,Packaging and Running Maven Application'){
         agent{ label 'Jenkins-Slave-Node' }
         tools{
            maven 'Maven-3.6.3'
@@ -34,7 +34,10 @@ pipeline{
         }
         steps{
            dir( 'Maven_Application' ){
-                sh 'mvn -v'
+                sh 'mvn package'
+           }
+	   dir( 'Maven_Application' ){
+                sh 'java -jar target/sample-maven-0.1.0.jar'
            }
         }
      }
