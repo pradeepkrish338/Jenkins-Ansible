@@ -2,13 +2,13 @@ pipeline{
    agent any
    stages{
       stage('STAGE1: Preparing Slave Nodes Using Ansible'){
-         agent{ label 'master' }
+         agent{ label 'ansibleserver' }
 	 steps{
 	    sh 'ansible-playbook jenkins_slave_dependency.yml -i inventory'
 	 }
       }
       stage('STAGE2: Downloading Application Code From GitHub'){
-         agent{ label 'Jenkins-Slave-Node' }
+         agent{ label 'slavenode' }
          steps{
             script{
                if( !fileExists('Jenkins_Pipeline_Files') ){
@@ -18,16 +18,16 @@ pipeline{
                     sh 'mkdir Maven_Application'
                }
 	       dir('Jenkins_Pipeline_Files'){
-                    git 'https://github.com/nehannn86/Jenkins-Ansible.git'
+                    git 'https://github.com/pradeepkrish338/Jenkins-Ansible.git'
                }
                dir('Maven_Application'){
-                    git 'https://github.com/nehannn86/sample-maven-project.git' 
+                    git 'https://github.com/pradeepkrish338/sample-maven-project.git' 
                }
 	    }	
          }
       }
      stage('STAGE3: Compiling,Testing,Packaging and Running Maven Application'){
-        agent{ label 'Jenkins-Slave-Node' }
+        agent{ label 'slavenode' }
         tools{
            maven 'Maven-3.6.3'
            jdk 'JDK-1.8.0'
