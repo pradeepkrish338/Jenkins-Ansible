@@ -2,7 +2,7 @@ pipeline{
    agent any
    stages{
       stage('STAGE1: Preparing Slave Nodes Using Ansible'){
-         agent{ label 'naster' }
+         agent{ label 'ansibleserver' }
 	 steps{
 	    sh 'ansible-playbook jenkins_slave_dependency.yml -i inventory'
 	 }
