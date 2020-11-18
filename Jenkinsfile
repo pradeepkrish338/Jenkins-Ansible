@@ -11,22 +11,14 @@ pipeline{
          agent{ label 'Jenkins-Slave-Node' }
          steps{
             script{
-               if(!fileExists('Pipeline_Files')){
+               when(!fileExists('Pipeline_Files')){
                   stage('Stage 1'){
                      sh 'mkdir Jenkins_Pipeline_Files'
-                  } else {
-                  stage('Stage 1'){
-                     echo "Directory Already Exists."
-                  }
-                   }  
+                  }  
                }
-               if( !fileExists('Maven_Application')){
+               when(!fileExists('Maven_Application')){
                    stage('Stage 2'){
                       sh 'mkdir Maven_Application'
-                   } else {
-                   stage('Stage 1'){
-                     echo "Directory Already Exists."
-                   }
                    }
                }
                dir('Jenkins_Pipeline_Files'){
