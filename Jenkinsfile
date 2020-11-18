@@ -1,4 +1,5 @@
 pipeline{
+   agent any
    stages{
       stage('STAGE1: Preparing Slave Nodes Using Ansible'){
          agent{ label 'ansibleserver' }
