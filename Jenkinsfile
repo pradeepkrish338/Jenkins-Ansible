@@ -12,14 +12,11 @@ pipeline{
          steps{
             script{
                when(!fileExists('Pipeline_Files')){
-                  stage('Stage 1'){
-                     sh 'mkdir Jenkins_Pipeline_Files'
+                    sh 'mkdir Jenkins_Pipeline_Files'
                   }  
                }
                when(!fileExists('Maven_Application')){
-                   stage('Stage 2'){
-                      sh 'mkdir Maven_Application'
-                   }
+                    sh 'mkdir Maven_Application'
                }
                dir('Jenkins_Pipeline_Files'){
                     git 'https://github.com/nehannn86/Jenkins-Ansible.git'
