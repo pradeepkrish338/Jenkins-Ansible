@@ -1,10 +1,10 @@
 
 [slave_nodes]
-node1 ansible_host=172.31.40.46
+node1 ansible_host=172.31.20.90
 
 [slave_nodes:vars]
 ansible_port=22
 ansible_connection='ssh'
 ansible_ssh_user='ec2-user' 
 ansible_sss_private_key_file='.ssh/id_rsa'
-#ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
